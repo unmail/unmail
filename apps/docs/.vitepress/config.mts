@@ -11,6 +11,8 @@ export default defineConfig({
 
   head: [['link', { rel: 'icon', href: '/favicon.png' }]],
 
+  base: '/unmail/',
+
   markdown: {
     config(md) {
       md.use(groupIconMdPlugin);
