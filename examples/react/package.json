@@ -5,7 +5,9 @@
   "sideEffects": false,
   "type": "module",
   "main": "./dist/index.js",
-  "files": ["dist/**"],
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "build": "tsdown src/index.tsx --format esm --target node20",
     "send": "node dist/index.js",
