@@ -25,14 +25,20 @@ Unstyled email components for React and Vue. Build beautiful emails with Tailwin
 npm install @unmail/react
 ```
 
+Create an email template:
+
 ```tsx
+// email.tsx
 import {
   Html, Head, Body, Container,
   Text, Heading, Button, Tailwind,
-  render,
 } from '@unmail/react';
 
-function WelcomeEmail({ name }: { name: string }) {
+interface EmailProps {
+  name: string;
+}
+
+export const WelcomeEmail: React.FC<Readonly<EmailProps>> = ({ name }) => {
   return (
     <Tailwind>
       <Html>
@@ -56,9 +62,30 @@ function WelcomeEmail({ name }: { name: string }) {
       </Html>
     </Tailwind>
   );
-}
+};
+```
+
+Render and send:
+
+```tsx
+// index.tsx
+import { render } from '@unmail/react';
+import nodemailer from 'nodemailer';
+import { WelcomeEmail } from './email';
+
+const transporter = nodemailer.createTransport({
+  host: 'localhost',
+  port: 1025,
+});
 
 const html = await render(<WelcomeEmail name="Alice" />);
+
+await transporter.sendMail({
+  from: 'you@example.com',
+  to: 'user@example.com',
+  subject: 'hello world',
+  html,
+});
 ```
 
 ### Vue
@@ -67,41 +94,65 @@ const html = await render(<WelcomeEmail name="Alice" />);
 npm install @unmail/vue
 ```
 
-```ts
-import { defineComponent, h } from 'vue';
+Create an email template:
+
+```vue
+<!-- WelcomeEmail.vue -->
+<script setup lang="ts">
 import {
   Html, Head, Body, Container,
   Text, Heading, Button, Tailwind,
-  render,
 } from '@unmail/vue';
 
-const WelcomeEmail = defineComponent({
-  props: { name: { type: String, required: true } },
-  setup(props) {
-    return () =>
-      h(Tailwind, null, () =>
-        h(Html, null, () => [
-          h(Head),
-          h(Body, { class: 'bg-gray-100' }, () =>
-            h(Container, { class: 'bg-white mx-auto my-10 p-8' }, () => [
-              h(Heading, { as: 'h1', class: 'text-2xl font-bold' }, () =>
-                `Welcome, ${props.name}!`
-              ),
-              h(Text, { class: 'text-gray-600' }, () =>
-                "We're glad to have you on board."
-              ),
-              h(Button, {
-                href: 'https://example.com',
-                class: 'bg-indigo-600 text-white px-6 py-3 rounded-md',
-              }, () => 'Get Started'),
-            ])
-          ),
-        ])
-      );
-  },
+defineProps<{ name: string }>();
+</script>
+
+<template>
+  <Tailwind>
+    <Html>
+      <Head />
+      <Body class="bg-gray-100">
+        <Container class="bg-white mx-auto my-10 p-8">
+          <Heading as="h1" class="text-2xl font-bold">
+            Welcome, {{ name }}!
+          </Heading>
+          <Text class="text-gray-600">
+            We're glad to have you on board.
+          </Text>
+          <Button
+            href="https://example.com"
+            class="bg-indigo-600 text-white px-6 py-3 rounded-md"
+          >
+            Get Started
+          </Button>
+        </Container>
+      </Body>
+    </Html>
+  </Tailwind>
+</template>
+```
+
+Render and send:
+
+```ts
+// index.ts
+import { render } from '@unmail/vue';
+import nodemailer from 'nodemailer';
+import WelcomeEmail from './WelcomeEmail.vue';
+
+const transporter = nodemailer.createTransport({
+  host: 'localhost',
+  port: 1025,
 });
 
 const html = await render(WelcomeEmail, { name: 'Alice' });
+
+await transporter.sendMail({
+  from: 'you@example.com',
+  to: 'user@example.com',
+  subject: 'hello world',
+  html,
+});
 ```
 
 ## Components

@@ -3,28 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=!example-*",
     "lint": "biome check",
     "lint:fix": "biome check --write .",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
     "release": "turbo run build --filter=./packages/* && pnpm changeset publish",
     "version": "changeset version && pnpm install --no-frozen-lockfile && pnpm lint:fix",
-    "mailpit:up": "docker compose -f examples/mailpit-nodemailer/docker-compose.yml up -d",
-    "mailpit:down": "docker compose -f examples/mailpit-nodemailer/docker-compose.yml down",
-    "mailpit:logs": "docker compose -f examples/mailpit-nodemailer/docker-compose.yml logs -f",
-    "example:send:react": "node examples/mailpit-nodemailer/send-react.mjs",
-    "example:send:vue": "node --conditions production examples/mailpit-nodemailer/send-vue.mjs",
-    "example:send": "node examples/mailpit-nodemailer/send-react.mjs && node --conditions production examples/mailpit-nodemailer/send-vue.mjs"
+    "mailpit:up": "docker compose -f examples/docker-compose.yml up -d",
+    "mailpit:down": "docker compose -f examples/docker-compose.yml down",
+    "mailpit:logs": "docker compose -f examples/docker-compose.yml logs -f",
+    "example:build": "pnpm --filter example-react-nodemailer build && pnpm --filter example-vue-nodemailer build",
+    "example:send:react": "pnpm --filter example-react-nodemailer send",
+    "example:send:vue": "pnpm --filter example-vue-nodemailer send",
+    "example:send": "pnpm example:send:react && pnpm example:send:vue"
   },
-  "dependencies": {
-    "@unmail/react": "workspace:*",
-    "@unmail/vue": "workspace:*",
-    "nodemailer": "^7.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "vue": "^3.5.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@biomejs/biome": "2.3.11",
     "@changesets/cli": "2.29.8",

@@ -1,0 +1,26 @@
+{
+  "name": "example-react-nodemailer",
+  "license": "MIT",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": ["dist/**"],
+  "scripts": {
+    "build": "tsdown src/index.tsx --format esm --target node20",
+    "send": "node dist/index.js",
+    "dev": "tsdown src/index.tsx --format esm --target node20 --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@unmail/react": "workspace:*",
+    "nodemailer": "^7.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6",
+    "tsdown": "^0.15.1",
+    "typescript": "^5"
+  }
+}

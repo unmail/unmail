@@ -44,8 +44,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pfrfrh/unmail.git",
+    "url": "https://github.com/unmail/unmail",
     "directory": "packages/vue"
   },
+  "homepage": "https://github.com/unmail/unmail",
   "keywords": ["vue", "email", "components", "tailwind", "unstyled"]
 }

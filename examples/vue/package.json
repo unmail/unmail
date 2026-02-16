@@ -1,0 +1,26 @@
+{
+  "name": "example-vue-nodemailer",
+  "license": "MIT",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": ["dist/**"],
+  "scripts": {
+    "build": "tsdown",
+    "send": "node dist/index.js",
+    "dev": "tsdown --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@unmail/vue": "workspace:*",
+    "nodemailer": "^7.0.0",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6",
+    "tsdown": "^0.15.1",
+    "typescript": "^5",
+    "unplugin-vue": "^7.1.1"
+  }
+}

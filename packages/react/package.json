@@ -53,8 +53,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pfrfrh/unmail.git",
+    "url": "https://github.com/unmail/unmail",
     "directory": "packages/react"
   },
+  "homepage": "https://github.com/unmail/unmail",
   "keywords": ["react", "email", "components", "tailwind", "unstyled"]
 }
