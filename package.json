@@ -9,6 +9,7 @@
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
     "release": "turbo run build --filter=./packages/* && pnpm changeset publish",
+    "ci:publish": "pnpm publish -r --filter ./packages/* --no-git-checks --provenance",
     "version": "changeset version && pnpm install --no-frozen-lockfile && pnpm lint:fix",
     "mailpit:up": "docker compose -f examples/docker-compose.yml up -d",
     "mailpit:down": "docker compose -f examples/docker-compose.yml down",
