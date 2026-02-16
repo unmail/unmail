@@ -1,23 +1,10 @@
 # Installation
 
-Install @unmail/react or @unmail/vue in your project.
+Install `@unmail/react` or `@unmail/vue` in your project.
 
 ## React
 
-::: code-group
-```bash [npm]
-npm install @unmail/react
-```
-
-```bash [pnpm]
-pnpm add @unmail/react
-```
-
-```bash [yarn]
-yarn add @unmail/react
-```
-:::
-
+<PackageManagerTabs package="@unmail/react" />
 
 ### Peer dependencies
 
@@ -37,20 +24,7 @@ Optional peer dependencies (only needed if you use the corresponding features):
 
 ## Vue
 
-::: code-group
-```bash [npm]
-npm install @unmail/vue
-```
-
-```bash [pnpm]
-pnpm add @unmail/vue
-```
-
-```bash [yarn]
-yarn add @unmail/vue
-```
-:::
-
+<PackageManagerTabs package="@unmail/vue" />
 
 ### Peer dependencies
 

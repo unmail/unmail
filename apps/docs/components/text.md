@@ -11,8 +11,10 @@ The `Text` component renders a `<p>` element with sensible default styles for em
 import { Text } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Text } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -38,27 +40,20 @@ export function Content() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Text } from "@unmail/vue";
+</script>
 
-export default defineComponent({
-  setup() {
-    return () => [
-      h(Text, () => "This is a paragraph with default styles."),
-      h(
-        Text,
-        { style: { fontSize: "18px", color: "#333333", fontWeight: "bold" } },
-        () => "This is a larger, bold paragraph."
-      ),
-      h(
-        Text,
-        { style: { marginTop: "0px" } },
-        () => "This paragraph has no top margin."
-      ),
-    ];
-  },
-});
+<template>
+  <Text>This is a paragraph with default styles.</Text>
+  <Text :style="{ fontSize: '18px', color: '#333333', fontWeight: 'bold' }">
+    This is a larger, bold paragraph.
+  </Text>
+  <Text :style="{ marginTop: '0px' }">
+    This paragraph has no top margin.
+  </Text>
+</template>
 ```
 :::
 

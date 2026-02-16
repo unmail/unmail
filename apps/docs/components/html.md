@@ -11,8 +11,10 @@ The `Html` component wraps your entire email as the outermost `<html>` element. 
 import { Html } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Html } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -37,21 +39,21 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Html, Head, Body, Container, Text } from "@unmail/vue";
+</script>
 
-export default defineComponent({
-  setup() {
-    return () =>
-      h(Html, { lang: "en", dir: "ltr" }, () => [
-        h(Head),
-        h(Body, () => [
-          h(Container, () => [h(Text, () => "Hello, world!")]),
-        ]),
-      ]);
-  },
-});
+<template>
+  <Html lang="en" dir="ltr">
+    <Head />
+    <Body>
+      <Container>
+        <Text>Hello, world!</Text>
+      </Container>
+    </Body>
+  </Html>
+</template>
 ```
 :::
 

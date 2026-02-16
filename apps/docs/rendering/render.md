@@ -11,8 +11,10 @@ The `render()` function takes your email component tree and produces an HTML str
 import { render } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { render } from "@unmail/vue";
+</script>
 ```
 :::
 

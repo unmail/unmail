@@ -11,8 +11,10 @@ The `Head` component renders a `<head>` element and automatically injects essent
 import { Head } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Head } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -44,27 +46,27 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Html, Head, Font } from "@unmail/vue";
+</script>
 
-export default defineComponent({
-  setup() {
-    return () =>
-      h(Html, () => [
-        h(Head, () => [
-          h(Font, {
-            fontFamily: "Inter",
-            fallbackFontFamily: "sans-serif",
-            webFont: {
-              url: "https://fonts.googleapis.com/css2?family=Inter&display=swap",
-              format: "woff2",
-            },
-          }),
-        ]),
-      ]);
-  },
-});
+<template>
+  <Html>
+    <Head>
+      <Font
+        font-family="Inter"
+        fallback-font-family="sans-serif"
+        :web-font="{
+          url: 'https://fonts.googleapis.com/css2?family=Inter&display=swap',
+          format: 'woff2',
+        }"
+      />
+      <title>Welcome Email</title>
+    </Head>
+    <!-- ... -->
+  </Html>
+</template>
 ```
 :::
 

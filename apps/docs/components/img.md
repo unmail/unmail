@@ -11,8 +11,10 @@ An image component with default styles that prevent unwanted borders, outlines, 
 import { Img } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Img } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -35,21 +37,19 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Img } from "@unmail/vue";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h(Img, {
-        src: "https://example.com/logo.png",
-        alt: "Company Logo",
-        width: 200,
-        height: 50,
-      });
-  },
-};
+<template>
+  <Img
+    src="https://example.com/logo.png"
+    alt="Company Logo"
+    :width="200"
+    :height="50"
+  />
+</template>
 ```
 :::
 

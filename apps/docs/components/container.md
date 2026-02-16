@@ -11,8 +11,10 @@ The `Container` component renders a centered `<table>` with a max-width of `37.5
 import { Container } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Container } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -39,25 +41,23 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Html, Head, Body, Container, Section, Text } from "@unmail/vue";
+</script>
 
-export default defineComponent({
-  setup() {
-    return () =>
-      h(Html, () => [
-        h(Head),
-        h(Body, () => [
-          h(Container, { style: { padding: "20px 0" } }, () => [
-            h(Section, () => [
-              h(Text, () => "Centered content with a max width of 600px."),
-            ]),
-          ]),
-        ]),
-      ]);
-  },
-});
+<template>
+  <Html>
+    <Head />
+    <Body>
+      <Container :style="{ padding: '20px 0' }">
+        <Section>
+          <Text>Centered content with a max width of 600px.</Text>
+        </Section>
+      </Container>
+    </Body>
+  </Html>
+</template>
 ```
 :::
 

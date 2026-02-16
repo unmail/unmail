@@ -11,8 +11,10 @@ The `Column` component renders a `<td>` element for use inside a `Row`. It repre
 import { Column } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Column } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -40,32 +42,24 @@ export function ThreeColumns() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Row, Column, Text } from "@unmail/vue";
+</script>
 
-export default defineComponent({
-  setup() {
-    return () =>
-      h(Row, () => [
-        h(
-          Column,
-          { style: { width: "33%", padding: "0 8px" } },
-          () => [h(Text, () => "Column 1")]
-        ),
-        h(
-          Column,
-          { style: { width: "33%", padding: "0 8px" } },
-          () => [h(Text, () => "Column 2")]
-        ),
-        h(
-          Column,
-          { style: { width: "34%", padding: "0 8px" } },
-          () => [h(Text, () => "Column 3")]
-        ),
-      ]);
-  },
-});
+<template>
+  <Row>
+    <Column :style="{ width: '33%', padding: '0 8px' }">
+      <Text>Column 1</Text>
+    </Column>
+    <Column :style="{ width: '33%', padding: '0 8px' }">
+      <Text>Column 2</Text>
+    </Column>
+    <Column :style="{ width: '34%', padding: '0 8px' }">
+      <Text>Column 3</Text>
+    </Column>
+  </Row>
+</template>
 ```
 :::
 

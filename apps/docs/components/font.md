@@ -13,8 +13,10 @@ Injects a `<style>` tag with an `@font-face` declaration for loading web fonts i
 import { Font, Head } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Font, Head } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -43,27 +45,25 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Font, Head } from "@unmail/vue";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h(Head, null, () =>
-        h(Font, {
-          fontFamily: "Inter",
-          fallbackFontFamily: "sans-serif",
-          webFont: {
-            url: "https://fonts.googleapis.com/css2?family=Inter&display=swap",
-            format: "woff2",
-          },
-          fontWeight: 400,
-          fontStyle: "normal",
-        })
-      );
-  },
-};
+<template>
+  <Head>
+    <Font
+      font-family="Inter"
+      fallback-font-family="sans-serif"
+      :web-font="{
+        url: 'https://fonts.googleapis.com/css2?family=Inter&display=swap',
+        format: 'woff2',
+      }"
+      :font-weight="400"
+      font-style="normal"
+    />
+  </Head>
+</template>
 ```
 :::
 

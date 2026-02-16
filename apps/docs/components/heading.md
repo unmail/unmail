@@ -11,8 +11,10 @@ A semantic heading component that renders as any heading level (`h1`–`h6`). It
 import { Heading } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Heading } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -37,19 +39,19 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Heading } from "@unmail/vue";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h("div", [
-        h(Heading, { as: "h1", mt: 16, mb: 8 }, () => "Welcome to our newsletter"),
-        h(Heading, { as: "h2", mx: 0, my: 12, style: { color: "#333" } }, () => "Latest updates"),
-      ]);
-  },
-};
+<template>
+  <Heading as="h1" :mt="16" :mb="8">
+    Welcome to our newsletter
+  </Heading>
+  <Heading as="h2" :mx="0" :my="12" :style="{ color: '#333' }">
+    Latest updates
+  </Heading>
+</template>
 ```
 :::
 

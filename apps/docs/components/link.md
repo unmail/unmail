@@ -11,8 +11,10 @@ A styled anchor element preconfigured for email. Opens links in a new tab by def
 import { Link } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Link } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -32,16 +34,16 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Link } from "@unmail/vue";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h(Link, { href: "https://example.com", style: { fontSize: "14px" } }, () => "Visit our website");
-  },
-};
+<template>
+  <Link href="https://example.com" :style="{ fontSize: '14px' }">
+    Visit our website
+  </Link>
+</template>
 ```
 :::
 

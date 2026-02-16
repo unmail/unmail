@@ -11,8 +11,10 @@ The `Row` component renders a `<table>` that creates a horizontal row for multi-
 import { Row } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Row } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -41,27 +43,25 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Container, Section, Row, Column, Text } from "@unmail/vue";
+</script>
 
-export default defineComponent({
-  setup() {
-    return () =>
-      h(Container, () => [
-        h(Section, () => [
-          h(Row, () => [
-            h(Column, { style: { width: "50%" } }, () => [
-              h(Text, () => "Left column"),
-            ]),
-            h(Column, { style: { width: "50%" } }, () => [
-              h(Text, () => "Right column"),
-            ]),
-          ]),
-        ]),
-      ]);
-  },
-});
+<template>
+  <Container>
+    <Section>
+      <Row>
+        <Column :style="{ width: '50%' }">
+          <Text>Left column</Text>
+        </Column>
+        <Column :style="{ width: '50%' }">
+          <Text>Right column</Text>
+        </Column>
+      </Row>
+    </Section>
+  </Container>
+</template>
 ```
 :::
 

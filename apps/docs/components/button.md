@@ -13,8 +13,10 @@ This is the most complex component in the library due to Outlook's lack of prope
 import { Button } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Button } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -43,29 +45,25 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Button } from "@unmail/vue";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h(
-        Button,
-        {
-          href: "https://example.com/signup",
-          style: {
-            backgroundColor: "#067df7",
-            color: "#fff",
-            padding: "12px 20px",
-            borderRadius: "4px",
-            fontSize: "14px",
-          },
-        },
-        () => "Get Started"
-      );
-  },
-};
+<template>
+  <Button
+    href="https://example.com/signup"
+    :style="{
+      backgroundColor: '#067df7',
+      color: '#fff',
+      padding: '12px 20px',
+      borderRadius: '4px',
+      fontSize: '14px',
+    }"
+  >
+    Get Started
+  </Button>
+</template>
 ```
 :::
 

@@ -11,8 +11,10 @@ A horizontal rule component with email-safe default styling. Renders a full-widt
 import { Hr } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Hr } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -34,20 +36,16 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Hr } from "@unmail/vue";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h("div", [
-        h("p", "Section one content"),
-        h(Hr, { style: { borderTop: "2px solid #333", margin: "24px 0" } }),
-        h("p", "Section two content"),
-      ]);
-  },
-};
+<template>
+  <p>Section one content</p>
+  <Hr :style="{ borderTop: '2px solid #333', margin: '24px 0' }" />
+  <p>Section two content</p>
+</template>
 ```
 :::
 

@@ -11,8 +11,10 @@ The `Section` component renders a full-width `<table>` used for grouping content
 import { Section } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Section } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -37,27 +39,21 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Container, Section, Text } from "@unmail/vue";
+</script>
 
-export default defineComponent({
-  setup() {
-    return () =>
-      h(Container, () => [
-        h(
-          Section,
-          { style: { padding: "24px", backgroundColor: "#ffffff" } },
-          () => [h(Text, () => "First section content.")]
-        ),
-        h(
-          Section,
-          { style: { padding: "24px", backgroundColor: "#f0f0f0" } },
-          () => [h(Text, () => "Second section content.")]
-        ),
-      ]);
-  },
-});
+<template>
+  <Container>
+    <Section :style="{ padding: '24px', backgroundColor: '#ffffff' }">
+      <Text>First section content.</Text>
+    </Section>
+    <Section :style="{ padding: '24px', backgroundColor: '#f0f0f0' }">
+      <Text>Second section content.</Text>
+    </Section>
+  </Container>
+</template>
 ```
 :::
 

@@ -1,0 +1,21 @@
+/* Code-group tab icons for React and Vue */
+.vp-code-group .tabs label[data-title="React"]::before,
+.vp-code-group .tabs label[data-title="Vue"]::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: -2px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.vp-code-group .tabs label[data-title="React"]::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-11.5 -10.232 23 20.463"><circle r="2.05" fill="%2361dafb"/><g stroke="%2361dafb" fill="none" stroke-width="1"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>');
+}
+
+.vp-code-group .tabs label[data-title="Vue"]::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 261.76 226.69"><path d="M161.096.001l-30.224 52.35L100.647.001H0l130.872 226.688L261.76.001z" fill="%2341b883"/><path d="M161.096.001l-30.224 52.35L100.647.001H52.346l78.526 136.01L209.398.001z" fill="%2334495e"/></svg>');
+}

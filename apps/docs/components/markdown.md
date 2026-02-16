@@ -11,8 +11,10 @@ Parses markdown strings into HTML with inline styles applied to every element. U
 import { Markdown } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Markdown } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -47,8 +49,8 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Markdown } from "@unmail/vue";
 
 const content = `
@@ -59,23 +61,19 @@ This is a **bold** statement with a [link](https://example.com).
 - Item one
 - Item two
 `;
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h(
-        Markdown,
-        {
-          markdownContainerStyles: { padding: "16px", maxWidth: "600px" },
-          markdownCustomStyles: {
-            h1: { fontSize: "28px", color: "#333" },
-            link: { color: "#067df7" },
-          },
-        },
-        () => content
-      );
-  },
-};
+<template>
+  <Markdown
+    :markdown-container-styles="{ padding: '16px', maxWidth: '600px' }"
+    :markdown-custom-styles="{
+      h1: { fontSize: '28px', color: '#333' },
+      link: { color: '#067df7' },
+    }"
+  >
+    {{ content }}
+  </Markdown>
+</template>
 ```
 :::
 

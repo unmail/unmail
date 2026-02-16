@@ -11,8 +11,10 @@ The `Body` component renders a `<body>` element with a built-in compatibility ha
 import { Body } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Body } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -37,21 +39,21 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Html, Head, Body, Container, Text } from "@unmail/vue";
+</script>
 
-export default defineComponent({
-  setup() {
-    return () =>
-      h(Html, () => [
-        h(Head),
-        h(Body, { style: { backgroundColor: "#f6f9fc" } }, () => [
-          h(Container, () => [h(Text, () => "Email content here.")]),
-        ]),
-      ]);
-  },
-});
+<template>
+  <Html>
+    <Head />
+    <Body :style="{ backgroundColor: '#f6f9fc' }">
+      <Container>
+        <Text>Email content here.</Text>
+      </Container>
+    </Body>
+  </Html>
+</template>
 ```
 :::
 

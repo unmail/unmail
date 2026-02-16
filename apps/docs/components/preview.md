@@ -11,8 +11,10 @@ Renders hidden preview text that appears in email client list views (the snippet
 import { Preview } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Preview } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -33,19 +35,15 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Preview } from "@unmail/vue";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h("div", [
-        h(Preview, null, () => "Your order has been shipped and is on its way!"),
-        // rest of email body
-      ]);
-  },
-};
+<template>
+  <Preview>Your order has been shipped and is on its way!</Preview>
+  <!-- rest of email body -->
+</template>
 ```
 :::
 

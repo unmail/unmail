@@ -13,8 +13,10 @@ Non-inlinable styles (media queries, pseudo-classes) are injected as a `<style>`
 import { Tailwind } from "@unmail/react";
 ```
 
-```ts [Vue]
+```vue [Vue]
+<script setup>
 import { Tailwind } from "@unmail/vue";
+</script>
 ```
 :::
 
@@ -56,23 +58,23 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Tailwind, Html, Head, Body, Text } from "@unmail/vue";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h(Tailwind, () => [
-        h(Html, () => [
-          h(Head),
-          h(Body, { class: "bg-white" }, () => [
-            h(Text, { class: "text-lg font-bold text-gray-900" }, () => "Hello world"),
-          ]),
-        ]),
-      ]);
-  },
-};
+<template>
+  <Tailwind>
+    <Html>
+      <Head />
+      <Body class="bg-white">
+        <Text class="text-lg font-bold text-gray-900">
+          Hello world
+        </Text>
+      </Body>
+    </Html>
+  </Tailwind>
+</template>
 ```
 :::
 
@@ -100,24 +102,22 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Tailwind, Html, Head, Body, Text } from "@unmail/vue";
 import { pixelBasedPreset } from "@unmail/vue/tailwind";
+</script>
 
-export default {
-  setup() {
-    return () =>
-      h(Tailwind, { config: { presets: [pixelBasedPreset] } }, () => [
-        h(Html, () => [
-          h(Head),
-          h(Body, { class: "bg-white" }, () => [
-            h(Text, { class: "text-base p-4" }, () => "Hello world"),
-          ]),
-        ]),
-      ]);
-  },
-};
+<template>
+  <Tailwind :config="{ presets: [pixelBasedPreset] }">
+    <Html>
+      <Head />
+      <Body class="bg-white">
+        <Text class="text-base p-4">Hello world</Text>
+      </Body>
+    </Html>
+  </Tailwind>
+</template>
 ```
 :::
 
@@ -169,37 +169,33 @@ export function Email() {
 }
 ```
 
-```ts [Vue]
-import { h } from "vue";
+```vue [Vue]
+<script setup>
 import { Tailwind, Html, Head, Body, Text } from "@unmail/vue";
 import { pixelBasedPreset } from "@unmail/vue/tailwind";
 
-export default {
-  setup() {
-    return () =>
-      h(
-        Tailwind,
-        {
-          config: {
-            presets: [pixelBasedPreset],
-            theme: {
-              extend: {
-                colors: { brand: "#007bff" },
-              },
-            },
-          },
-        },
-        () => [
-          h(Html, () => [
-            h(Head),
-            h(Body, () => [
-              h(Text, { class: "text-brand font-bold" }, () => "Branded text"),
-            ]),
-          ]),
-        ]
-      );
+const tailwindConfig = {
+  presets: [pixelBasedPreset],
+  theme: {
+    extend: {
+      colors: {
+        brand: "#007bff",
+      },
+    },
   },
 };
+</script>
+
+<template>
+  <Tailwind :config="tailwindConfig">
+    <Html>
+      <Head />
+      <Body>
+        <Text class="text-brand font-bold">Branded text</Text>
+      </Body>
+    </Html>
+  </Tailwind>
+</template>
 ```
 :::
 
