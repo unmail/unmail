@@ -1,0 +1,67 @@
+---
+title: Installation
+description: Install @unmail/react or @unmail/vue in your project.
+---
+
+## React
+
+<CodeGroup>
+```bash npm
+npm install @unmail/react
+```
+
+```bash pnpm
+pnpm add @unmail/react
+```
+
+```bash yarn
+yarn add @unmail/react
+```
+</CodeGroup>
+
+### Peer dependencies
+
+`@unmail/react` requires the following peer dependencies:
+
+| Package | Version |
+|---------|---------|
+| `react` | `>=18.0.0` |
+| `react-dom` | `>=18.0.0` |
+
+Optional peer dependencies (only needed if you use the corresponding features):
+
+| Package | Feature |
+|---------|---------|
+| `prettier` | `render({ pretty: true })` |
+| `html-to-text` | `render({ plainText: true })` |
+
+## Vue
+
+<CodeGroup>
+```bash npm
+npm install @unmail/vue
+```
+
+```bash pnpm
+pnpm add @unmail/vue
+```
+
+```bash yarn
+yarn add @unmail/vue
+```
+</CodeGroup>
+
+### Peer dependencies
+
+`@unmail/vue` requires the following peer dependencies:
+
+| Package | Version |
+|---------|---------|
+| `vue` | `>=3.3.0` |
+
+Optional peer dependencies:
+
+| Package | Feature |
+|---------|---------|
+| `prettier` | `render(component, props, { pretty: true })` |
+| `html-to-text` | `render(component, props, { plainText: true })` |

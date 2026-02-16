@@ -1,0 +1,95 @@
+---
+title: Text
+description: Paragraph element with email-safe default styles.
+---
+
+The `Text` component renders a `<p>` element with sensible default styles for email. It includes consistent font size, line height, and margins that work reliably across email clients.
+
+## Import
+
+<CodeGroup>
+```tsx React
+import { Text } from "@unmail/react";
+```
+
+```ts Vue
+import { Text } from "@unmail/vue";
+```
+</CodeGroup>
+
+## Usage
+
+<CodeGroup>
+```tsx React
+import { Text } from "@unmail/react";
+
+export function Content() {
+  return (
+    <>
+      <Text>This is a paragraph with default styles.</Text>
+      <Text style={{ fontSize: "18px", color: "#333333", fontWeight: "bold" }}>
+        This is a larger, bold paragraph.
+      </Text>
+      <Text style={{ marginTop: "0px" }}>
+        This paragraph has no top margin.
+      </Text>
+    </>
+  );
+}
+```
+
+```ts Vue
+import { h } from "vue";
+import { Text } from "@unmail/vue";
+
+export default defineComponent({
+  setup() {
+    return () => [
+      h(Text, () => "This is a paragraph with default styles."),
+      h(
+        Text,
+        { style: { fontSize: "18px", color: "#333333", fontWeight: "bold" } },
+        () => "This is a larger, bold paragraph."
+      ),
+      h(
+        Text,
+        { style: { marginTop: "0px" } },
+        () => "This paragraph has no top margin."
+      ),
+    ];
+  },
+});
+```
+</CodeGroup>
+
+## Props
+
+| Prop    | Type                   | Default | Description                              |
+| ------- | ---------------------- | ------- | ---------------------------------------- |
+| `style` | `React.CSSProperties` | —       | Styles merged with defaults.             |
+| `...`   | —                      | —       | All standard `<p>` element attributes.   |
+
+## Default Styles
+
+The following styles are applied by default and can be overridden via the `style` prop:
+
+| Property       | Default Value |
+| -------------- | ------------- |
+| `fontSize`     | `"14px"`      |
+| `lineHeight`   | `"24px"`      |
+| `marginTop`    | `"16px"`      |
+| `marginBottom` | `"16px"`      |
+
+## Rendered Structure
+
+```html
+<p style="font-size: 14px; line-height: 24px; margin-top: 16px; margin-bottom: 16px;">
+  <!-- children -->
+</p>
+```
+
+## Notes
+
+- Margins are computed using the `computeMargins` utility, which ensures consistent handling of `margin`, `marginTop`, `marginRight`, `marginBottom`, and `marginLeft` shorthand and longhand properties.
+- When you provide a `style` prop, your margin values override the defaults — they are not additive.
+- Always use pixel values for font sizes and margins in email. Relative units like `em` and `rem` are inconsistently supported across email clients.

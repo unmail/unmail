@@ -1,0 +1,83 @@
+---
+title: "Img"
+description: "Image element with email-safe defaults."
+---
+
+An image component with default styles that prevent unwanted borders, outlines, and spacing issues common across email clients.
+
+## Import
+
+<CodeGroup>
+```tsx React
+import { Img } from "@unmail/react";
+```
+
+```ts Vue
+import { Img } from "@unmail/vue";
+```
+</CodeGroup>
+
+## Usage
+
+<CodeGroup>
+```tsx React
+import { Img } from "@unmail/react";
+
+export function Email() {
+  return (
+    <Img
+      src="https://example.com/logo.png"
+      alt="Company Logo"
+      width={200}
+      height={50}
+    />
+  );
+}
+```
+
+```ts Vue
+import { h } from "vue";
+import { Img } from "@unmail/vue";
+
+export default {
+  setup() {
+    return () =>
+      h(Img, {
+        src: "https://example.com/logo.png",
+        alt: "Company Logo",
+        width: 200,
+        height: 50,
+      });
+  },
+};
+```
+</CodeGroup>
+
+## Props
+
+All standard HTML `<img>` element attributes are supported, including:
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `src` | `string` | — | The image URL. |
+| `alt` | `string` | — | Alternative text for the image. |
+| `width` | `number \| string` | — | Image width. |
+| `height` | `number \| string` | — | Image height. |
+
+## Default styles
+
+The following styles are applied by default to ensure consistent rendering across email clients:
+
+```css
+display: block;
+outline: none;
+border: none;
+text-decoration: none;
+```
+
+## Notes
+
+- `display: block` prevents the phantom spacing that some email clients add below images.
+- `border: none` removes the default border that older email clients add to linked images.
+- `outline: none` and `text-decoration: none` provide additional cleanup for linked images.
+- Always set explicit `width` and `height` attributes for best compatibility.

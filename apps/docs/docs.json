@@ -1,0 +1,70 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "unmail",
+  "description": "Unstyled email components for React and Vue. Build beautiful emails with Tailwind CSS.",
+  "colors": {
+    "primary": "#6366f1",
+    "light": "#818cf8",
+    "dark": "#4f46e5"
+  },
+  "favicon": "/favicon.png",
+  "navbar": {
+    "links": [
+      {
+        "type": "github",
+        "href": "https://github.com/pfrfrh/unmail"
+      }
+    ]
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "quick-start"
+            ]
+          },
+          {
+            "group": "Components",
+            "pages": [
+              "components/html",
+              "components/head",
+              "components/body",
+              "components/container",
+              "components/section",
+              "components/row",
+              "components/column",
+              "components/text",
+              "components/heading",
+              "components/link",
+              "components/img",
+              "components/button",
+              "components/hr",
+              "components/preview",
+              "components/font",
+              "components/markdown"
+            ]
+          },
+          {
+            "group": "Rendering",
+            "pages": [
+              "rendering/render",
+              "rendering/tailwind"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/pfrfrh/unmail"
+    }
+  }
+}

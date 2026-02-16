@@ -1,0 +1,41 @@
+{
+  "name": "unmail",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "biome check",
+    "lint:fix": "biome check --write .",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "release": "turbo run build --filter=./packages/* && pnpm changeset publish",
+    "version": "changeset version && pnpm install --no-frozen-lockfile && pnpm lint:fix",
+    "mailpit:up": "docker compose -f examples/mailpit-nodemailer/docker-compose.yml up -d",
+    "mailpit:down": "docker compose -f examples/mailpit-nodemailer/docker-compose.yml down",
+    "mailpit:logs": "docker compose -f examples/mailpit-nodemailer/docker-compose.yml logs -f",
+    "example:send:react": "node examples/mailpit-nodemailer/send-react.mjs",
+    "example:send:vue": "node --conditions production examples/mailpit-nodemailer/send-vue.mjs",
+    "example:send": "node examples/mailpit-nodemailer/send-react.mjs && node --conditions production examples/mailpit-nodemailer/send-vue.mjs"
+  },
+  "dependencies": {
+    "@unmail/react": "workspace:*",
+    "@unmail/vue": "workspace:*",
+    "nodemailer": "^7.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.11",
+    "@changesets/cli": "2.29.8",
+    "@types/node": "22.19.7",
+    "happy-dom": "20.0.11",
+    "tsconfig": "workspace:*",
+    "tsdown": "0.15.12",
+    "turbo": "2.5.8",
+    "typescript": "5.9.3",
+    "vite": "6.4.1",
+    "vitest": "4.0.17"
+  },
+  "packageManager": "pnpm@10.20.0"
+}

@@ -1,0 +1,103 @@
+---
+title: "Button"
+description: "CTA button with Outlook padding hacks for consistent rendering."
+---
+
+A call-to-action button component that renders as an `<a>` tag. It includes sophisticated Outlook compatibility hacks using MSO conditional comments to simulate padding in Microsoft email clients.
+
+This is the most complex component in the library due to Outlook's lack of proper padding support on anchor elements.
+
+## Import
+
+<CodeGroup>
+```tsx React
+import { Button } from "@unmail/react";
+```
+
+```ts Vue
+import { Button } from "@unmail/vue";
+```
+</CodeGroup>
+
+## Usage
+
+<CodeGroup>
+```tsx React
+import { Button } from "@unmail/react";
+
+export function Email() {
+  return (
+    <Button
+      href="https://example.com/signup"
+      style={{
+        backgroundColor: "#067df7",
+        color: "#fff",
+        padding: "12px 20px",
+        borderRadius: "4px",
+        fontSize: "14px",
+      }}
+    >
+      Get Started
+    </Button>
+  );
+}
+```
+
+```ts Vue
+import { h } from "vue";
+import { Button } from "@unmail/vue";
+
+export default {
+  setup() {
+    return () =>
+      h(
+        Button,
+        {
+          href: "https://example.com/signup",
+          style: {
+            backgroundColor: "#067df7",
+            color: "#fff",
+            padding: "12px 20px",
+            borderRadius: "4px",
+            fontSize: "14px",
+          },
+        },
+        () => "Get Started"
+      );
+  },
+};
+```
+</CodeGroup>
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `target` | `string` | `'_blank'` | Link target. |
+
+All standard HTML `<a>` element attributes are also supported. The component renders as an `<a>` tag, not a `<button>`.
+
+## Default styles
+
+```css
+line-height: 100%;
+text-decoration: none;
+display: inline-block;
+max-width: 100%;
+```
+
+## Padding and Outlook compatibility
+
+**Set padding via the `style` prop or Tailwind classes.** The component parses padding values and generates MSO conditional comments to simulate padding in Outlook:
+
+- `mso-font-width` and `mso-text-raise` are used to simulate vertical padding.
+- Hair-space characters (`&#8202;`) are used to simulate horizontal width in Outlook.
+- The padding values are extracted from the `style` prop and converted into Outlook-compatible markup automatically.
+
+You do not need to do anything special — just set `padding` on the `style` prop and the component handles the rest.
+
+## Notes
+
+- The component renders as an `<a>` tag for maximum email client compatibility. Native `<button>` elements are not supported in most email clients.
+- `target="_blank"` is set by default.
+- Always provide an `href` prop for the button destination.

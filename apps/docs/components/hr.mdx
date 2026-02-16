@@ -1,0 +1,69 @@
+---
+title: "Hr"
+description: "Horizontal rule for email layouts."
+---
+
+A horizontal rule component with email-safe default styling. Renders a full-width divider with a subtle top border.
+
+## Import
+
+<CodeGroup>
+```tsx React
+import { Hr } from "@unmail/react";
+```
+
+```ts Vue
+import { Hr } from "@unmail/vue";
+```
+</CodeGroup>
+
+## Usage
+
+<CodeGroup>
+```tsx React
+import { Hr } from "@unmail/react";
+
+export function Email() {
+  return (
+    <>
+      <p>Section one content</p>
+      <Hr style={{ borderTop: "2px solid #333", margin: "24px 0" }} />
+      <p>Section two content</p>
+    </>
+  );
+}
+```
+
+```ts Vue
+import { h } from "vue";
+import { Hr } from "@unmail/vue";
+
+export default {
+  setup() {
+    return () =>
+      h("div", [
+        h("p", "Section one content"),
+        h(Hr, { style: { borderTop: "2px solid #333", margin: "24px 0" } }),
+        h("p", "Section two content"),
+      ]);
+  },
+};
+```
+</CodeGroup>
+
+## Props
+
+All standard HTML `<hr>` element attributes are supported.
+
+## Default styles
+
+```css
+width: 100%;
+border: none;
+border-top: 1px solid #eaeaea;
+```
+
+## Notes
+
+- `border: none` is applied first to reset any default browser/email client borders, then `border-top` adds the visible divider line.
+- Override the `borderTop` style to customize the divider appearance.

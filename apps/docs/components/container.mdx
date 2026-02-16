@@ -1,0 +1,104 @@
+---
+title: Container
+description: Centered max-width container for email content.
+---
+
+The `Container` component renders a centered `<table>` with a max-width of `37.5em` (600px). It is the standard wrapper for constraining email content to a readable width.
+
+## Import
+
+<CodeGroup>
+```tsx React
+import { Container } from "@unmail/react";
+```
+
+```ts Vue
+import { Container } from "@unmail/vue";
+```
+</CodeGroup>
+
+## Usage
+
+<CodeGroup>
+```tsx React
+import { Html, Head, Body, Container, Section, Text } from "@unmail/react";
+
+export function Email() {
+  return (
+    <Html>
+      <Head />
+      <Body>
+        <Container style={{ padding: "20px 0" }}>
+          <Section>
+            <Text>Centered content with a max width of 600px.</Text>
+          </Section>
+        </Container>
+      </Body>
+    </Html>
+  );
+}
+```
+
+```ts Vue
+import { h } from "vue";
+import { Html, Head, Body, Container, Section, Text } from "@unmail/vue";
+
+export default defineComponent({
+  setup() {
+    return () =>
+      h(Html, () => [
+        h(Head),
+        h(Body, () => [
+          h(Container, { style: { padding: "20px 0" } }, () => [
+            h(Section, () => [
+              h(Text, () => "Centered content with a max width of 600px."),
+            ]),
+          ]),
+        ]),
+      ]);
+  },
+});
+```
+</CodeGroup>
+
+## Props
+
+| Prop    | Type                   | Default | Description                               |
+| ------- | ---------------------- | ------- | ----------------------------------------- |
+| `style` | `React.CSSProperties` | —       | Additional styles merged with defaults.   |
+| `...`   | —                      | —       | All standard `<table>` element attributes.|
+
+## Default Styles
+
+The following attributes and styles are applied by default:
+
+| Property       | Value            |
+| -------------- | ---------------- |
+| `align`        | `"center"`       |
+| `width`        | `"100%"`         |
+| `maxWidth`     | `"37.5em"` (600px) |
+| `border`       | `0`              |
+| `cellPadding`  | `"0"`            |
+| `cellSpacing`  | `"0"`            |
+| `role`         | `"presentation"` |
+
+## Rendered Structure
+
+```html
+<table align="center" width="100%" border="0" cellpadding="0" cellspacing="0"
+       role="presentation" style="max-width: 37.5em;">
+  <tbody>
+    <tr>
+      <td>
+        <!-- children -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Notes
+
+- The `37.5em` max-width translates to 600px at the default 16px font size, which is the most widely used email content width.
+- `role="presentation"` tells screen readers to treat the table as a layout element rather than data.
+- Use `Container` inside `<Body>` and place `<Section>`, `<Row>`, or content components inside it.

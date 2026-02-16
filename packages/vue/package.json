@@ -1,0 +1,51 @@
+{
+  "name": "@unmail/vue",
+  "version": "0.1.0",
+  "description": "Unstyled components for creating beautiful emails with Vue",
+  "sideEffects": false,
+  "license": "MIT",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "files": ["dist/**"],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsdown src/index.ts --format esm --dts --external vue --external prettier --external html-to-text --external tailwindcss --external css-tree --external marked",
+    "dev": "tsdown src/index.ts --format esm --dts --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "dependencies": {
+    "html-to-text": "^9.0.5",
+    "prettier": "^3.5.3"
+  },
+  "optionalDependencies": {
+    "tailwindcss": "^4.1.18",
+    "css-tree": "^3.1.0",
+    "marked": "^15.0.0"
+  },
+  "devDependencies": {
+    "@types/css-tree": "^2.3.10",
+    "@types/html-to-text": "^9.0.4",
+    "vue": "^3.5.0",
+    "tsconfig": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pfrfrh/unmail.git",
+    "directory": "packages/vue"
+  },
+  "keywords": ["vue", "email", "components", "tailwind", "unstyled"]
+}
