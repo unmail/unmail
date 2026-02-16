@@ -1,6 +1,6 @@
 {
   "name": "@unmail/react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unstyled components for creating beautiful emails with React",
   "sideEffects": false,
   "license": "MIT",
