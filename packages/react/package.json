@@ -60,7 +60,7 @@
     "url": "https://github.com/unmail/unmail",
     "directory": "packages/react"
   },
-  "homepage": "https://github.com/unmail/unmail",
+  "homepage": "https://unmail.github.io/unmail/",
   "keywords": [
     "react",
     "email",
