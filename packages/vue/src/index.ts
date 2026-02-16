@@ -5,6 +5,17 @@ export type { BodyProps } from './components/body';
 export { Button } from './components/button';
 export type { ButtonProps } from './components/button';
 
+export { CodeBlock } from './components/code-block';
+export type { CodeBlockProps } from './components/code-block';
+
+export { CodeInline } from './components/code-inline';
+export type { CodeInlineProps } from './components/code-inline';
+
+// CodeBlock supporting exports
+export type { PrismLanguage } from './components/languages-available';
+export type { Theme as CodeBlockTheme } from './components/themes';
+export * as codeBlockThemes from './components/themes';
+
 export { Column } from './components/column';
 export type { ColumnProps } from './components/column';
 

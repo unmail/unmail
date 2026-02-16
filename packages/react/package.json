@@ -7,7 +7,9 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**"],
+  "files": [
+    "dist/**"
+  ],
   "exports": {
     ".": {
       "import": {
@@ -32,16 +34,18 @@
   },
   "dependencies": {
     "html-to-text": "^9.0.5",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "prismjs": "^1.30.0"
   },
   "optionalDependencies": {
-    "tailwindcss": "^4.1.18",
     "css-tree": "^3.1.0",
-    "marked": "^15.0.0"
+    "marked": "^15.0.0",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@types/css-tree": "^2.3.10",
     "@types/html-to-text": "^9.0.4",
+    "@types/prismjs": "^1.26.6",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
     "react": "^19.0.0",
@@ -57,5 +61,11 @@
     "directory": "packages/react"
   },
   "homepage": "https://github.com/unmail/unmail",
-  "keywords": ["react", "email", "components", "tailwind", "unstyled"]
+  "keywords": [
+    "react",
+    "email",
+    "components",
+    "tailwind",
+    "unstyled"
+  ]
 }

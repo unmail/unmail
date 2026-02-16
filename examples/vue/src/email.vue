@@ -16,8 +16,24 @@ import {
   Preview,
   Font,
   Markdown,
+  CodeBlock,
+  CodeInline,
+  codeBlockThemes,
   Tailwind,
 } from "@unmail/vue";
+
+const codeExample = `<script setup>
+import { Html, Text, Button } from "@unmail/vue";
+<\/script>
+
+<template>
+  <Html>
+    <Text>Hello from Unmail!</Text>
+    <Button href="https://example.com">
+      Get Started
+    </Button>
+  </Html>
+</template>`;
 
 const markdownContent = `
 ## What is Unmail?
@@ -197,11 +213,11 @@ const markdownCustomStyles = {
                   :mt="12"
                   :mb="4"
                 >
-                  16 Components
+                  18 Components
                 </Heading>
                 <Text class="text-xs text-gray-500 leading-5 mt-0">
-                  Everything from layout primitives to buttons, images, and
-                  markdown rendering.
+                  Everything from layout primitives to buttons, images,
+                  code blocks, and markdown rendering.
                 </Text>
               </Column>
               <Column class="w-1/3 px-3 align-top">
@@ -259,6 +275,41 @@ const markdownCustomStyles = {
             >
               {{ markdownContent }}
             </Markdown>
+          </Section>
+
+          <Hr class="border-gray-200 mx-10 my-0" />
+
+          <!-- Code section -->
+          <Section class="px-10 py-8">
+            <Heading
+              as="h2"
+              class="text-xl font-semibold text-gray-900"
+              :mt="0"
+              :mb="8"
+            >
+              Quick Start
+            </Heading>
+            <Text class="text-gray-600 text-sm leading-7 mt-0 mb-4">
+              Install the package with
+              <CodeInline
+                :style="{
+                  backgroundColor: '#f3f4f6',
+                  padding: '2px 6px',
+                  borderRadius: '4px',
+                  fontFamily: 'monospace',
+                  fontSize: '13px',
+                }"
+              >
+                npm install @unmail/vue
+              </CodeInline>
+              and start building emails:
+            </Text>
+            <CodeBlock
+              :code="codeExample"
+              language="markup"
+              :theme="codeBlockThemes.nightOwl"
+              :style="{ borderRadius: '8px', fontSize: '13px' }"
+            />
           </Section>
 
           <Hr class="border-gray-200 mx-10 my-0" />

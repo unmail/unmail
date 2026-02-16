@@ -1,12 +1,25 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin,
+} from 'vitepress-plugin-group-icons';
 
 export default defineConfig({
   title: 'unmail',
-  description: 'Unstyled email components for React and Vue. Build beautiful emails with Tailwind CSS.',
+  description:
+    'Unstyled email components for React and Vue. Build beautiful emails with Tailwind CSS.',
 
-  head: [
-    ['link', { rel: 'icon', href: '/favicon.png' }],
-  ],
+  head: [['link', { rel: 'icon', href: '/favicon.png' }]],
+
+  markdown: {
+    config(md) {
+      md.use(groupIconMdPlugin);
+    },
+  },
+
+  vite: {
+    plugins: [groupIconVitePlugin()],
+  },
 
   themeConfig: {
     nav: [
@@ -43,6 +56,8 @@ export default defineConfig({
           { text: 'Preview', link: '/components/preview' },
           { text: 'Font', link: '/components/font' },
           { text: 'Markdown', link: '/components/markdown' },
+          { text: 'CodeBlock', link: '/components/code-block' },
+          { text: 'CodeInline', link: '/components/code-inline' },
         ],
       },
       {
@@ -54,9 +69,7 @@ export default defineConfig({
       },
     ],
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/unmail/unmail' },
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/unmail/unmail' }],
 
     footer: {
       message: 'Released under the MIT License.',
@@ -67,4 +80,4 @@ export default defineConfig({
       provider: 'local',
     },
   },
-})
+});

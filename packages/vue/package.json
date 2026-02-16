@@ -6,7 +6,9 @@
   "license": "MIT",
   "type": "module",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**"],
+  "files": [
+    "dist/**"
+  ],
   "exports": {
     ".": {
       "import": {
@@ -26,18 +28,20 @@
   },
   "dependencies": {
     "html-to-text": "^9.0.5",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "prismjs": "^1.30.0"
   },
   "optionalDependencies": {
-    "tailwindcss": "^4.1.18",
     "css-tree": "^3.1.0",
-    "marked": "^15.0.0"
+    "marked": "^15.0.0",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@types/css-tree": "^2.3.10",
     "@types/html-to-text": "^9.0.4",
-    "vue": "^3.5.0",
-    "tsconfig": "workspace:*"
+    "@types/prismjs": "^1.26.6",
+    "tsconfig": "workspace:*",
+    "vue": "^3.5.0"
   },
   "publishConfig": {
     "access": "public"
@@ -48,5 +52,11 @@
     "directory": "packages/vue"
   },
   "homepage": "https://github.com/unmail/unmail",
-  "keywords": ["vue", "email", "components", "tailwind", "unstyled"]
+  "keywords": [
+    "vue",
+    "email",
+    "components",
+    "tailwind",
+    "unstyled"
+  ]
 }

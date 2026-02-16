@@ -3,6 +3,9 @@ import { describe, expect, it } from 'vitest';
 import {
   Body,
   Button,
+  CodeBlock,
+  CodeInline,
+  codeBlockThemes,
   Column,
   Container,
   Font,
@@ -397,5 +400,155 @@ describe('full email render', () => {
     expect(html).toContain('Welcome');
     expect(html).toContain('Hello World');
     expect(html).toContain('Click me');
+  });
+});
+
+describe('<CodeBlock>', () => {
+  it('renders code with syntax highlighting', async () => {
+    const html = await render(
+      React.createElement(CodeBlock, {
+        code: 'const x = 1;',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+      }),
+    );
+    expect(html).toContain('<pre');
+    expect(html).toContain('<code>');
+    expect(html).toContain('const');
+    expect(html).toContain('<span');
+  });
+
+  it('renders line numbers when enabled', async () => {
+    const html = await render(
+      React.createElement(CodeBlock, {
+        code: 'line1\nline2\nline3',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+        lineNumbers: true,
+      }),
+    );
+    expect(html).toContain('>1<');
+    expect(html).toContain('>2<');
+    expect(html).toContain('>3<');
+  });
+
+  it('applies theme base styles to <pre>', async () => {
+    const html = await render(
+      React.createElement(CodeBlock, {
+        code: 'hello',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+      }),
+    );
+    // Dracula theme has a dark background
+    expect(html).toContain('background');
+    expect(html).toContain('width:100%');
+  });
+
+  it('applies custom font family', async () => {
+    const html = await render(
+      React.createElement(CodeBlock, {
+        code: 'test',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+        fontFamily: 'Fira Code',
+      }),
+    );
+    expect(html).toContain('Fira Code');
+  });
+
+  it('replaces spaces with non-breaking space sequences', async () => {
+    const html = await render(
+      React.createElement(CodeBlock, {
+        code: 'a b',
+        language: 'markup',
+        theme: codeBlockThemes.dracula,
+      }),
+    );
+    // Spaces are replaced with \xA0\u200D\u200B for email compatibility
+    expect(html).toContain('\xA0\u200D\u200B');
+    expect(html).not.toMatch(/<span[^>]*> <\/span>/);
+  });
+
+  it('renders multi-line code with <br> tags', async () => {
+    const html = await render(
+      React.createElement(CodeBlock, {
+        code: 'line1\nline2',
+        language: 'markup',
+        theme: codeBlockThemes.dracula,
+      }),
+    );
+    expect(html).toContain('<br/>');
+  });
+
+  it('applies custom style on top of theme', async () => {
+    const html = await render(
+      React.createElement(CodeBlock, {
+        code: 'test',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+        style: { borderRadius: '8px' },
+      }),
+    );
+    expect(html).toContain('border-radius:8px');
+  });
+
+  it('throws for unknown language', () => {
+    expect(() =>
+      React.createElement(CodeBlock, {
+        code: 'test',
+        language: 'nonexistent' as any,
+        theme: codeBlockThemes.dracula,
+      }),
+    ).not.toThrow();
+    // The error is thrown at render time, not at createElement time
+  });
+});
+
+describe('<CodeInline>', () => {
+  it('renders code and span elements with Orange.fr fix', async () => {
+    const html = await render(
+      React.createElement(CodeInline, null, 'npm install'),
+    );
+    expect(html).toContain('<code');
+    expect(html).toContain('cino');
+    expect(html).toContain('<span');
+    expect(html).toContain('cio');
+    expect(html).toContain('npm install');
+  });
+
+  it('includes Orange.fr CSS fix in style tag', async () => {
+    const html = await render(
+      React.createElement(CodeInline, null, 'test'),
+    );
+    expect(html).toContain('<style>');
+    expect(html).toContain('meta ~ .cino');
+    expect(html).toContain('meta ~ .cio');
+  });
+
+  it('hides the span fallback by default', async () => {
+    const html = await render(
+      React.createElement(CodeInline, null, 'test'),
+    );
+    expect(html).toMatch(/class="[^"]*cio[^"]*"[^>]*style="display:none/);
+  });
+
+  it('applies custom className to both elements', async () => {
+    const html = await render(
+      React.createElement(CodeInline, { className: 'my-code' }, 'test'),
+    );
+    expect(html).toContain('my-code cino');
+    expect(html).toContain('my-code cio');
+  });
+
+  it('applies custom style', async () => {
+    const html = await render(
+      React.createElement(
+        CodeInline,
+        { style: { backgroundColor: '#f0f0f0' } },
+        'test',
+      ),
+    );
+    expect(html).toContain('background-color:#f0f0f0');
   });
 });

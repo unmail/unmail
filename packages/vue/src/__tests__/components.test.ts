@@ -4,6 +4,9 @@ import { renderToString } from 'vue/server-renderer';
 import {
   Body,
   Button,
+  CodeBlock,
+  CodeInline,
+  codeBlockThemes,
   Column,
   Container,
   Font,
@@ -398,5 +401,131 @@ describe('full email render', () => {
     expect(html).toContain('Welcome');
     expect(html).toContain('Hello World');
     expect(html).toContain('Click me');
+  });
+});
+
+describe('<CodeBlock>', () => {
+  it('renders code with syntax highlighting', async () => {
+    const html = await renderVNode(
+      h(CodeBlock, {
+        code: 'const x = 1;',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+      }),
+    );
+    expect(html).toContain('<pre');
+    expect(html).toContain('<code>');
+    expect(html).toContain('const');
+    expect(html).toContain('<span');
+  });
+
+  it('renders line numbers when enabled', async () => {
+    const html = await renderVNode(
+      h(CodeBlock, {
+        code: 'line1\nline2\nline3',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+        lineNumbers: true,
+      }),
+    );
+    expect(html).toContain('>1<');
+    expect(html).toContain('>2<');
+    expect(html).toContain('>3<');
+  });
+
+  it('applies theme base styles to <pre>', async () => {
+    const html = await renderVNode(
+      h(CodeBlock, {
+        code: 'hello',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+      }),
+    );
+    expect(html).toContain('background');
+    expect(html).toContain('width:100%');
+  });
+
+  it('applies custom font family', async () => {
+    const html = await renderVNode(
+      h(CodeBlock, {
+        code: 'test',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+        fontFamily: 'Fira Code',
+      }),
+    );
+    expect(html).toContain('Fira Code');
+  });
+
+  it('replaces spaces with non-breaking space sequences', async () => {
+    const html = await renderVNode(
+      h(CodeBlock, {
+        code: 'a b',
+        language: 'markup',
+        theme: codeBlockThemes.dracula,
+      }),
+    );
+    // Spaces are replaced with \xA0\u200D\u200B for email compatibility
+    expect(html).toContain('\xA0\u200D\u200B');
+  });
+
+  it('renders multi-line code with <br> tags', async () => {
+    const html = await renderVNode(
+      h(CodeBlock, {
+        code: 'line1\nline2',
+        language: 'markup',
+        theme: codeBlockThemes.dracula,
+      }),
+    );
+    expect(html).toContain('<br');
+  });
+
+  it('applies custom style on top of theme', async () => {
+    const html = await renderVNode(
+      h(CodeBlock, {
+        code: 'test',
+        language: 'javascript',
+        theme: codeBlockThemes.dracula,
+        style: { borderRadius: '8px' },
+      }),
+    );
+    expect(html).toContain('border-radius:8px');
+  });
+});
+
+describe('<CodeInline>', () => {
+  it('renders code and span elements with Orange.fr fix', async () => {
+    const html = await renderVNode(
+      h(CodeInline, null, () => ['npm install']),
+    );
+    expect(html).toContain('<code');
+    expect(html).toContain('cino');
+    expect(html).toContain('<span');
+    expect(html).toContain('cio');
+    expect(html).toContain('npm install');
+  });
+
+  it('includes Orange.fr CSS fix in style tag', async () => {
+    const html = await renderVNode(
+      h(CodeInline, null, () => ['test']),
+    );
+    expect(html).toContain('<style>');
+    expect(html).toContain('meta ~ .cino');
+    expect(html).toContain('meta ~ .cio');
+  });
+
+  it('hides the span fallback by default', async () => {
+    const html = await renderVNode(
+      h(CodeInline, null, () => ['test']),
+    );
+    expect(html).toContain('display:none');
+    expect(html).toContain('cio');
+  });
+
+  it('applies custom style', async () => {
+    const html = await renderVNode(
+      h(CodeInline, { style: { backgroundColor: '#f0f0f0' } }, () => ['test']),
+    );
+    expect(html).toContain('background-color:#f0f0f0');
   });
 });
