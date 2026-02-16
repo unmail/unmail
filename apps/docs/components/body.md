@@ -1,26 +1,26 @@
----
-title: Body
-description: Body element with Yahoo and AOL email client compatibility.
----
+# Body
+
+Body element with Yahoo and AOL email client compatibility.
 
 The `Body` component renders a `<body>` element with a built-in compatibility hack for Yahoo and AOL email clients. It wraps children in a nested table structure to ensure consistent rendering.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Body } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Body } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Html, Head, Body, Container, Text } from "@unmail/react";
 
 export function Email() {
@@ -37,7 +37,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Html, Head, Body, Container, Text } from "@unmail/vue";
 
@@ -53,7 +53,8 @@ export default defineComponent({
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

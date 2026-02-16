@@ -1,26 +1,26 @@
----
-title: "Hr"
-description: "Horizontal rule for email layouts."
----
+# Hr
+
+Horizontal rule for email layouts.
 
 A horizontal rule component with email-safe default styling. Renders a full-width divider with a subtle top border.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Hr } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Hr } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Hr } from "@unmail/react";
 
 export function Email() {
@@ -34,7 +34,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Hr } from "@unmail/vue";
 
@@ -49,7 +49,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

@@ -1,26 +1,26 @@
----
-title: Column
-description: Table cell for column-based email layouts.
----
+# Column
+
+Table cell for column-based email layouts.
 
 The `Column` component renders a `<td>` element for use inside a `Row`. It represents a single column in a multi-column email layout.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Column } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Column } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Row, Column, Text } from "@unmail/react";
 
 export function ThreeColumns() {
@@ -40,7 +40,7 @@ export function ThreeColumns() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Row, Column, Text } from "@unmail/vue";
 
@@ -67,7 +67,8 @@ export default defineComponent({
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

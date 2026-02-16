@@ -1,26 +1,26 @@
----
-title: Section
-description: Table-based section for grouping email content.
----
+# Section
+
+Table-based section for grouping email content.
 
 The `Section` component renders a full-width `<table>` used for grouping content within a `Container`. It provides a logical content block in your email layout.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Section } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Section } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Container, Section, Text } from "@unmail/react";
 
 export function Email() {
@@ -37,7 +37,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Container, Section, Text } from "@unmail/vue";
 
@@ -59,7 +59,8 @@ export default defineComponent({
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

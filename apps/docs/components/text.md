@@ -1,26 +1,26 @@
----
-title: Text
-description: Paragraph element with email-safe default styles.
----
+# Text
+
+Paragraph element with email-safe default styles.
 
 The `Text` component renders a `<p>` element with sensible default styles for email. It includes consistent font size, line height, and margins that work reliably across email clients.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Text } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Text } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Text } from "@unmail/react";
 
 export function Content() {
@@ -38,7 +38,7 @@ export function Content() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Text } from "@unmail/vue";
 
@@ -60,7 +60,8 @@ export default defineComponent({
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

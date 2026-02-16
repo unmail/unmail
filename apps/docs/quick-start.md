@@ -1,7 +1,6 @@
----
-title: Quick Start
-description: Send your first email in under 5 minutes.
----
+# Quick Start
+
+Send your first email in under 5 minutes.
 
 ## React
 

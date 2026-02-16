@@ -1,26 +1,26 @@
----
-title: "Heading"
-description: "Polymorphic heading element (h1-h6) with margin shorthand props."
----
+# Heading
+
+Polymorphic heading element (h1-h6) with margin shorthand props.
 
 A semantic heading component that renders as any heading level (`h1`–`h6`). It includes margin shorthand props for convenient spacing control in email layouts.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Heading } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Heading } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Heading } from "@unmail/react";
 
 export function Email() {
@@ -37,7 +37,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Heading } from "@unmail/vue";
 
@@ -51,7 +51,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

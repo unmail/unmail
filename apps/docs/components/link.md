@@ -1,26 +1,26 @@
----
-title: "Link"
-description: "Anchor element with email-safe defaults."
----
+# Link
+
+Anchor element with email-safe defaults.
 
 A styled anchor element preconfigured for email. Opens links in a new tab by default and applies a clean visual style with no underline.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Link } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Link } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Link } from "@unmail/react";
 
 export function Email() {
@@ -32,7 +32,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Link } from "@unmail/vue";
 
@@ -43,7 +43,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

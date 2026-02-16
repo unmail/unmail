@@ -1,7 +1,6 @@
----
-title: "Tailwind"
-description: "Tailwind CSS support for email templates with automatic style inlining."
----
+# Tailwind
+
+Tailwind CSS support for email templates with automatic style inlining.
 
 The `Tailwind` component wraps your email tree, collects all `className` values from child elements, compiles them with Tailwind CSS v4's `compile()` API, and inlines the resulting styles on each element.
 
@@ -9,15 +8,16 @@ Non-inlinable styles (media queries, pseudo-classes) are injected as a `<style>`
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Tailwind } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Tailwind } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 
@@ -36,8 +36,8 @@ The `content` field is omitted because classes are auto-detected from the compon
 
 ### Basic
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Tailwind, Html, Head, Body, Text } from "@unmail/react";
 
 export function Email() {
@@ -56,7 +56,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Tailwind, Html, Head, Body, Text } from "@unmail/vue";
 
@@ -74,14 +74,15 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ### With pixelBasedPreset
 
 Email clients don't support `rem` units. The `pixelBasedPreset` overrides Tailwind's default rem-based spacing and font sizes with pixel equivalents.
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Tailwind } from "@unmail/react";
 import { pixelBasedPreset } from "@unmail/react/tailwind";
 
@@ -99,7 +100,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Tailwind, Html, Head, Body, Text } from "@unmail/vue";
 import { pixelBasedPreset } from "@unmail/vue/tailwind";
@@ -118,7 +119,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 Sample values from the preset:
 
@@ -137,8 +139,8 @@ Sample values from the preset:
 
 ### Custom config
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Tailwind, Html, Head, Body, Text } from "@unmail/react";
 import { pixelBasedPreset } from "@unmail/react/tailwind";
 
@@ -167,7 +169,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Tailwind, Html, Head, Body, Text } from "@unmail/vue";
 import { pixelBasedPreset } from "@unmail/vue/tailwind";
@@ -199,7 +201,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Notes
 

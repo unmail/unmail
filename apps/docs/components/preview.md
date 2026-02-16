@@ -1,26 +1,26 @@
----
-title: "Preview"
-description: "Hidden preview text for email client list views."
----
+# Preview
+
+Hidden preview text for email client list views.
 
 Renders hidden preview text that appears in email client list views (the snippet shown next to or below the subject line). The content is visually hidden in the email body but read by email clients for preview purposes.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Preview } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Preview } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Preview } from "@unmail/react";
 
 export function Email() {
@@ -33,7 +33,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Preview } from "@unmail/vue";
 
@@ -47,7 +47,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

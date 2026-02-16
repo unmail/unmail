@@ -1,7 +1,6 @@
----
-title: "Button"
-description: "CTA button with Outlook padding hacks for consistent rendering."
----
+# Button
+
+CTA button with Outlook padding hacks for consistent rendering.
 
 A call-to-action button component that renders as an `<a>` tag. It includes sophisticated Outlook compatibility hacks using MSO conditional comments to simulate padding in Microsoft email clients.
 
@@ -9,20 +8,21 @@ This is the most complex component in the library due to Outlook's lack of prope
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Button } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Button } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Button } from "@unmail/react";
 
 export function Email() {
@@ -43,7 +43,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Button } from "@unmail/vue";
 
@@ -67,7 +67,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

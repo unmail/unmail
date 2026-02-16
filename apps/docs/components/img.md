@@ -1,26 +1,26 @@
----
-title: "Img"
-description: "Image element with email-safe defaults."
----
+# Img
+
+Image element with email-safe defaults.
 
 An image component with default styles that prevent unwanted borders, outlines, and spacing issues common across email clients.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Img } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Img } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Img } from "@unmail/react";
 
 export function Email() {
@@ -35,7 +35,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Img } from "@unmail/vue";
 
@@ -51,7 +51,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

@@ -1,26 +1,26 @@
----
-title: Html
-description: Root HTML element for email documents.
----
+# Html
+
+Root HTML element for email documents.
 
 The `Html` component wraps your entire email as the outermost `<html>` element. It sets sensible defaults for `lang` and `dir` attributes to ensure proper rendering across email clients.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Html } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Html } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Html, Head, Body, Container, Text } from "@unmail/react";
 
 export function Email() {
@@ -37,7 +37,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Html, Head, Body, Container, Text } from "@unmail/vue";
 
@@ -53,7 +53,8 @@ export default defineComponent({
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

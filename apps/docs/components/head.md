@@ -1,26 +1,26 @@
----
-title: Head
-description: Head element with auto-injected meta tags for email compatibility.
----
+# Head
+
+Head element with auto-injected meta tags for email compatibility.
 
 The `Head` component renders a `<head>` element and automatically injects essential meta tags for email rendering. Place any `<Font>` components inside `<Head>`.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Head } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Head } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Html, Head } from "@unmail/react";
 import { Font } from "@unmail/react";
 
@@ -44,7 +44,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Html, Head, Font } from "@unmail/vue";
 
@@ -66,7 +66,8 @@ export default defineComponent({
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

@@ -1,23 +1,23 @@
----
-title: Installation
-description: Install @unmail/react or @unmail/vue in your project.
----
+# Installation
+
+Install @unmail/react or @unmail/vue in your project.
 
 ## React
 
-<CodeGroup>
-```bash npm
+::: code-group
+```bash [npm]
 npm install @unmail/react
 ```
 
-```bash pnpm
+```bash [pnpm]
 pnpm add @unmail/react
 ```
 
-```bash yarn
+```bash [yarn]
 yarn add @unmail/react
 ```
-</CodeGroup>
+:::
+
 
 ### Peer dependencies
 
@@ -37,19 +37,20 @@ Optional peer dependencies (only needed if you use the corresponding features):
 
 ## Vue
 
-<CodeGroup>
-```bash npm
+::: code-group
+```bash [npm]
 npm install @unmail/vue
 ```
 
-```bash pnpm
+```bash [pnpm]
 pnpm add @unmail/vue
 ```
 
-```bash yarn
+```bash [yarn]
 yarn add @unmail/vue
 ```
-</CodeGroup>
+:::
+
 
 ### Peer dependencies
 

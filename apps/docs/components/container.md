@@ -1,26 +1,26 @@
----
-title: Container
-description: Centered max-width container for email content.
----
+# Container
+
+Centered max-width container for email content.
 
 The `Container` component renders a centered `<table>` with a max-width of `37.5em` (600px). It is the standard wrapper for constraining email content to a readable width.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Container } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Container } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Html, Head, Body, Container, Section, Text } from "@unmail/react";
 
 export function Email() {
@@ -39,7 +39,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Html, Head, Body, Container, Section, Text } from "@unmail/vue";
 
@@ -59,7 +59,8 @@ export default defineComponent({
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

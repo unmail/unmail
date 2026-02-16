@@ -1,7 +1,6 @@
----
-title: "Font"
-description: "Web font @font-face injection for emails."
----
+# Font
+
+Web font @font-face injection for emails.
 
 Injects a `<style>` tag with an `@font-face` declaration for loading web fonts in emails. Also applies the font globally via a `* { font-family }` rule and sets `mso-font-alt` for Outlook fallback.
 
@@ -9,20 +8,21 @@ Injects a `<style>` tag with an `@font-face` declaration for loading web fonts i
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Font, Head } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Font, Head } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Font, Head } from "@unmail/react";
 
 export function Email() {
@@ -43,7 +43,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Font, Head } from "@unmail/vue";
 
@@ -65,7 +65,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

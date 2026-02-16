@@ -1,7 +1,6 @@
----
-title: Introduction
-description: Unstyled email components for React and Vue. Build beautiful emails with Tailwind CSS.
----
+# Introduction
+
+Unstyled email components for React and Vue. Build beautiful emails with Tailwind CSS.
 
 ## What is unmail?
 
@@ -11,14 +10,10 @@ Both packages produce identical HTML output, so you can switch between framework
 
 ## Packages
 
-<CardGroup cols={2}>
-  <Card title="@unmail/react" icon="react" href="/installation#react">
-    Components, render function, and Tailwind support for React.
-  </Card>
-  <Card title="@unmail/vue" icon="vuejs" href="/installation#vue">
-    Components, render function, and Tailwind support for Vue.
-  </Card>
-</CardGroup>
+| Package | Description |
+|---------|-------------|
+| [`@unmail/react`](/installation#react) | Components, render function, and Tailwind support for React. |
+| [`@unmail/vue`](/installation#vue) | Components, render function, and Tailwind support for Vue. |
 
 ## Why unmail?
 

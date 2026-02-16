@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "mintlify dev",
-    "build": "mintlify build"
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "preview": "vitepress preview ."
   },
   "devDependencies": {
-    "mintlify": "^4.0.0"
+    "vitepress": "^1.6.3"
   }
 }

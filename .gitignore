@@ -29,8 +29,9 @@ yarn-error.log*
 # turbo
 .turbo
 
-# mintlify
-.mintlify
+# vitepress
+apps/docs/.vitepress/cache
+apps/docs/.vitepress/dist
 
 # reference repos (not part of the project)
 react-email/

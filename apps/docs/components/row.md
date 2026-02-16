@@ -1,26 +1,26 @@
----
-title: Row
-description: Table row for multi-column email layouts.
----
+# Row
+
+Table row for multi-column email layouts.
 
 The `Row` component renders a `<table>` that creates a horizontal row for multi-column layouts. Unlike `Section`, it wraps children in `<tbody><tr>` without an extra `<td>`, expecting `Column` components as direct children.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Row } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Row } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Container, Section, Row, Column, Text } from "@unmail/react";
 
 export function Email() {
@@ -41,7 +41,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Container, Section, Row, Column, Text } from "@unmail/vue";
 
@@ -63,7 +63,8 @@ export default defineComponent({
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 

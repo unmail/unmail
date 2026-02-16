@@ -1,40 +1,41 @@
----
-title: "render()"
-description: "Convert email component trees to HTML or plain text strings."
----
+# render()
+
+Convert email component trees to HTML or plain text strings.
 
 The `render()` function takes your email component tree and produces an HTML string, ready to send. It prepends the XHTML 1.0 Transitional doctype automatically.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { render } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { render } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## API
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 const html = await render(
   element: React.ReactElement,
   options?: RenderOptions
 ): Promise<string>;
 ```
 
-```ts Vue
+```ts [Vue]
 const html = await render(
   component: Component,
   props?: Record<string, unknown>,
   options?: RenderOptions
 ): Promise<string>;
 ```
-</CodeGroup>
+:::
+
 
 **React** uses streaming SSR internally (`renderToReadableStream` with a `Suspense` fallback where supported, otherwise `renderToPipeableStream`).
 
@@ -63,26 +64,27 @@ type RenderOptions = {
 
 ### Basic rendering
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { render } from "@unmail/react";
 import { WelcomeEmail } from "./emails/welcome";
 
 const html = await render(<WelcomeEmail name="Alice" />);
 ```
 
-```ts Vue
+```ts [Vue]
 import { render } from "@unmail/vue";
 import WelcomeEmail from "./emails/welcome";
 
 const html = await render(WelcomeEmail, { name: "Alice" });
 ```
-</CodeGroup>
+:::
+
 
 ### Pretty printing
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { render } from "@unmail/react";
 import { WelcomeEmail } from "./emails/welcome";
 
@@ -91,7 +93,7 @@ const html = await render(<WelcomeEmail name="Alice" />, {
 });
 ```
 
-```ts Vue
+```ts [Vue]
 import { render } from "@unmail/vue";
 import WelcomeEmail from "./emails/welcome";
 
@@ -99,12 +101,13 @@ const html = await render(WelcomeEmail, { name: "Alice" }, {
   pretty: true,
 });
 ```
-</CodeGroup>
+:::
+
 
 ### Plain text
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { render } from "@unmail/react";
 import { WelcomeEmail } from "./emails/welcome";
 
@@ -116,7 +119,7 @@ const text = await render(<WelcomeEmail name="Alice" />, {
 });
 ```
 
-```ts Vue
+```ts [Vue]
 import { render } from "@unmail/vue";
 import WelcomeEmail from "./emails/welcome";
 
@@ -127,7 +130,8 @@ const text = await render(WelcomeEmail, { name: "Alice" }, {
   },
 });
 ```
-</CodeGroup>
+:::
+
 
 ## Notes
 

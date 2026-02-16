@@ -1,26 +1,26 @@
----
-title: "Markdown"
-description: "Render markdown strings as styled inline HTML for emails."
----
+# Markdown
+
+Render markdown strings as styled inline HTML for emails.
 
 Parses markdown strings into HTML with inline styles applied to every element. Uses the `marked` library under the hood with a custom renderer that injects styles directly onto each HTML tag for email client compatibility.
 
 ## Import
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Markdown } from "@unmail/react";
 ```
 
-```ts Vue
+```ts [Vue]
 import { Markdown } from "@unmail/vue";
 ```
-</CodeGroup>
+:::
+
 
 ## Usage
 
-<CodeGroup>
-```tsx React
+::: code-group
+```tsx [React]
 import { Markdown } from "@unmail/react";
 
 const content = `
@@ -47,7 +47,7 @@ export function Email() {
 }
 ```
 
-```ts Vue
+```ts [Vue]
 import { h } from "vue";
 import { Markdown } from "@unmail/vue";
 
@@ -77,7 +77,8 @@ export default {
   },
 };
 ```
-</CodeGroup>
+:::
+
 
 ## Props
 
