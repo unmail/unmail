@@ -13,6 +13,10 @@ export default defineConfig({
 
   base: '/unmail/',
 
+  sitemap: {
+    hostname: 'https://unmail.github.io/unmail/',
+  },
+
   markdown: {
     config(md) {
       md.use(groupIconMdPlugin);
