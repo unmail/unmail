@@ -15,7 +15,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@unmail/react": "^0.1.1",
+    "@unmail/react": "workspace:*",
     "nodemailer": "^7.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

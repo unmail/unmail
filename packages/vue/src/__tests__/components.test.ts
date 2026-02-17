@@ -4,9 +4,7 @@ import { renderToString } from 'vue/server-renderer';
 import {
   Body,
   Button,
-  CodeBlock,
   CodeInline,
-  codeBlockThemes,
   Column,
   Container,
   Font,
@@ -19,9 +17,9 @@ import {
   Markdown,
   Preview,
   Row,
+  render,
   Section,
   Text,
-  render,
 } from '../index';
 
 /**
@@ -86,9 +84,7 @@ describe('<Head>', () => {
 
   it('renders children', async () => {
     const html = await renderVNode(
-      h(Html, null, () => [
-        h(Head, null, () => [h('title', 'Test Email')]),
-      ]),
+      h(Html, null, () => [h(Head, null, () => [h('title', 'Test Email')])]),
     );
     expect(html).toContain('<title>Test Email</title>');
   });
@@ -106,11 +102,9 @@ describe('<Body>', () => {
 
   it('hoists background to body and zeroes margins', async () => {
     const html = await renderVNode(
-      h(
-        Body,
-        { style: { backgroundColor: '#ffffff', margin: '10px' } },
-        () => ['Content'],
-      ),
+      h(Body, { style: { backgroundColor: '#ffffff', margin: '10px' } }, () => [
+        'Content',
+      ]),
     );
     // Body tag should have background-color
     expect(html).toMatch(/<body[^>]*background-color: ?#ffffff/);
@@ -140,9 +134,7 @@ describe('<Container>', () => {
 
 describe('<Section>', () => {
   it('renders as table with children in td', async () => {
-    const html = await renderVNode(
-      h(Section, null, () => ['Section content']),
-    );
+    const html = await renderVNode(h(Section, null, () => ['Section content']));
     expect(html).toContain('Section content');
     expect(html).toContain('<table');
     expect(html).toContain('<td>');
@@ -209,7 +201,9 @@ describe('<Heading>', () => {
   });
 
   it('renders as custom heading level', async () => {
-    const html = await renderVNode(h(Heading, { as: 'h3' }, () => ['Subtitle']));
+    const html = await renderVNode(
+      h(Heading, { as: 'h3' }, () => ['Subtitle']),
+    );
     expect(html).toContain('<h3');
     expect(html).toContain('Subtitle');
   });
@@ -274,11 +268,9 @@ describe('<Button>', () => {
 
   it('renders MSO conditional comments for padding', async () => {
     const html = await renderVNode(
-      h(
-        Button,
-        { href: '#', style: { padding: '10px 20px' } },
-        () => ['Button'],
-      ),
+      h(Button, { href: '#', style: { padding: '10px 20px' } }, () => [
+        'Button',
+      ]),
     );
     expect(html).toContain('<!--[if mso]>');
     expect(html).toContain('mso-font-width');
@@ -404,100 +396,9 @@ describe('full email render', () => {
   });
 });
 
-describe('<CodeBlock>', () => {
-  it('renders code with syntax highlighting', async () => {
-    const html = await renderVNode(
-      h(CodeBlock, {
-        code: 'const x = 1;',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-      }),
-    );
-    expect(html).toContain('<pre');
-    expect(html).toContain('<code>');
-    expect(html).toContain('const');
-    expect(html).toContain('<span');
-  });
-
-  it('renders line numbers when enabled', async () => {
-    const html = await renderVNode(
-      h(CodeBlock, {
-        code: 'line1\nline2\nline3',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-        lineNumbers: true,
-      }),
-    );
-    expect(html).toContain('>1<');
-    expect(html).toContain('>2<');
-    expect(html).toContain('>3<');
-  });
-
-  it('applies theme base styles to <pre>', async () => {
-    const html = await renderVNode(
-      h(CodeBlock, {
-        code: 'hello',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-      }),
-    );
-    expect(html).toContain('background');
-    expect(html).toContain('width:100%');
-  });
-
-  it('applies custom font family', async () => {
-    const html = await renderVNode(
-      h(CodeBlock, {
-        code: 'test',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-        fontFamily: 'Fira Code',
-      }),
-    );
-    expect(html).toContain('Fira Code');
-  });
-
-  it('replaces spaces with non-breaking space sequences', async () => {
-    const html = await renderVNode(
-      h(CodeBlock, {
-        code: 'a b',
-        language: 'markup',
-        theme: codeBlockThemes.dracula,
-      }),
-    );
-    // Spaces are replaced with \xA0\u200D\u200B for email compatibility
-    expect(html).toContain('\xA0\u200D\u200B');
-  });
-
-  it('renders multi-line code with <br> tags', async () => {
-    const html = await renderVNode(
-      h(CodeBlock, {
-        code: 'line1\nline2',
-        language: 'markup',
-        theme: codeBlockThemes.dracula,
-      }),
-    );
-    expect(html).toContain('<br');
-  });
-
-  it('applies custom style on top of theme', async () => {
-    const html = await renderVNode(
-      h(CodeBlock, {
-        code: 'test',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-        style: { borderRadius: '8px' },
-      }),
-    );
-    expect(html).toContain('border-radius:8px');
-  });
-});
-
 describe('<CodeInline>', () => {
   it('renders code and span elements with Orange.fr fix', async () => {
-    const html = await renderVNode(
-      h(CodeInline, null, () => ['npm install']),
-    );
+    const html = await renderVNode(h(CodeInline, null, () => ['npm install']));
     expect(html).toContain('<code');
     expect(html).toContain('cino');
     expect(html).toContain('<span');
@@ -506,18 +407,14 @@ describe('<CodeInline>', () => {
   });
 
   it('includes Orange.fr CSS fix in style tag', async () => {
-    const html = await renderVNode(
-      h(CodeInline, null, () => ['test']),
-    );
+    const html = await renderVNode(h(CodeInline, null, () => ['test']));
     expect(html).toContain('<style>');
     expect(html).toContain('meta ~ .cino');
     expect(html).toContain('meta ~ .cio');
   });
 
   it('hides the span fallback by default', async () => {
-    const html = await renderVNode(
-      h(CodeInline, null, () => ['test']),
-    );
+    const html = await renderVNode(h(CodeInline, null, () => ['test']));
     expect(html).toContain('display:none');
     expect(html).toContain('cio');
   });

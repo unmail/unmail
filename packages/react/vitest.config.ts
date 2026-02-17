@@ -5,4 +5,7 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
   },
+  ssr: {
+    external: ['css-tree'],
+  },
 });

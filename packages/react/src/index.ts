@@ -1,74 +1,49 @@
 // Components
-export { Body } from './components/body';
+
 export type { BodyProps } from './components/body';
-
-export { Button } from './components/button';
+export { Body } from './components/body';
 export type { ButtonProps } from './components/button';
-
-export { CodeBlock } from './components/code-block';
-export type { CodeBlockProps } from './components/code-block';
-
-export { CodeInline } from './components/code-inline';
+export { Button } from './components/button';
 export type { CodeInlineProps } from './components/code-inline';
-
-// CodeBlock supporting exports
-export type { PrismLanguage } from './components/languages-available';
-export type { Theme as CodeBlockTheme } from './components/themes';
-export * as codeBlockThemes from './components/themes';
-
-export { Column } from './components/column';
+export { CodeInline } from './components/code-inline';
 export type { ColumnProps } from './components/column';
-
-export { Container } from './components/container';
+export { Column } from './components/column';
 export type { ContainerProps } from './components/container';
-
-export { Font } from './components/font';
+export { Container } from './components/container';
 export type { FontProps } from './components/font';
-
-export { Head } from './components/head';
+export { Font } from './components/font';
 export type { HeadProps } from './components/head';
-
-export { Heading } from './components/heading';
+export { Head } from './components/head';
 export type { HeadingProps } from './components/heading';
-
-export { Hr } from './components/hr';
+export { Heading } from './components/heading';
 export type { HrProps } from './components/hr';
-
-export { Html } from './components/html';
+export { Hr } from './components/hr';
 export type { HtmlProps } from './components/html';
-
-export { Img } from './components/img';
+export { Html } from './components/html';
 export type { ImgProps } from './components/img';
-
-export { Link } from './components/link';
+export { Img } from './components/img';
 export type { LinkProps } from './components/link';
-
-export { Markdown } from './components/markdown';
+export { Link } from './components/link';
 export type { MarkdownProps } from './components/markdown';
-
-export { Preview } from './components/preview';
+export { Markdown } from './components/markdown';
 export type { PreviewProps } from './components/preview';
-
-export { Row } from './components/row';
+export { Preview } from './components/preview';
 export type { RowProps } from './components/row';
-
-export { Section } from './components/section';
+export { Row } from './components/row';
 export type { SectionProps } from './components/section';
-
-export { Text } from './components/text';
+export { Section } from './components/section';
 export type { TextProps } from './components/text';
-
+export { Text } from './components/text';
+export type { RenderOptions } from './render';
 // Render
 export { render } from './render';
-export type { RenderOptions } from './render';
-
-// Tailwind
-export {
-  Tailwind,
-  pixelBasedPreset,
-} from './tailwind';
 export type {
+  EmailElementProps,
   TailwindConfig,
   TailwindProps,
-  EmailElementProps,
+} from './tailwind';
+// Tailwind
+export {
+  pixelBasedPreset,
+  Tailwind,
 } from './tailwind';

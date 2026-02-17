@@ -1,11 +1,10 @@
+import { convert } from 'html-to-text';
 import type { Component } from 'vue';
 import { createSSRApp, h } from 'vue';
 import { renderToString } from 'vue/server-renderer';
-import { convert } from 'html-to-text';
+import { cleanup } from './cleanup';
 import type { RenderOptions } from './options';
 import { plainTextSelectors } from './plain-text-selectors';
-import { pretty } from './pretty';
-import { cleanup } from './cleanup';
 
 const doctype =
   '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
@@ -32,10 +31,6 @@ export async function render(
   }
 
   const html = `${doctype}${cleanup(markup)}`;
-
-  if (options?.pretty) {
-    return pretty(html);
-  }
 
   return html;
 }

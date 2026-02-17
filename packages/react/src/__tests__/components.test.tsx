@@ -3,9 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   Body,
   Button,
-  CodeBlock,
   CodeInline,
-  codeBlockThemes,
   Column,
   Container,
   Font,
@@ -18,14 +16,16 @@ import {
   Markdown,
   Preview,
   Row,
+  render,
   Section,
   Text,
-  render,
 } from '../index';
 
 describe('render', () => {
   it('renders a simple component to HTML with doctype', async () => {
-    const html = await render(React.createElement(Html, null, React.createElement(Head)));
+    const html = await render(
+      React.createElement(Html, null, React.createElement(Head)),
+    );
     expect(html).toContain('<!DOCTYPE html');
     expect(html).toContain('<html');
     expect(html).toContain('<head');
@@ -33,10 +33,14 @@ describe('render', () => {
 
   it('renders plain text when option is set', async () => {
     const text = await render(
-      React.createElement(Html, null,
-        React.createElement(Body, null,
-          React.createElement(Text, null, 'Hello World')
-        )
+      React.createElement(
+        Html,
+        null,
+        React.createElement(
+          Body,
+          null,
+          React.createElement(Text, null, 'Hello World'),
+        ),
       ),
       { plainText: true },
     );
@@ -53,7 +57,9 @@ describe('<Html>', () => {
   });
 
   it('renders with custom lang and dir', async () => {
-    const html = await render(React.createElement(Html, { lang: 'ar', dir: 'rtl' }));
+    const html = await render(
+      React.createElement(Html, { lang: 'ar', dir: 'rtl' }),
+    );
     expect(html).toContain('lang="ar"');
     expect(html).toContain('dir="rtl"');
   });
@@ -70,8 +76,12 @@ describe('<Head>', () => {
 
   it('renders children', async () => {
     const html = await render(
-      React.createElement(Html, null,
-        React.createElement(Head, null,
+      React.createElement(
+        Html,
+        null,
+        React.createElement(
+          Head,
+          null,
           React.createElement('title', null, 'Test Email'),
         ),
       ),
@@ -82,9 +92,7 @@ describe('<Head>', () => {
 
 describe('<Body>', () => {
   it('renders children inside table wrapper', async () => {
-    const html = await render(
-      React.createElement(Body, null, 'Test content'),
-    );
+    const html = await render(React.createElement(Body, null, 'Test content'));
     expect(html).toContain('Test content');
     expect(html).toContain('<table');
     expect(html).toContain('role="presentation"');
@@ -94,9 +102,13 @@ describe('<Body>', () => {
 
   it('hoists background to body and zeroes margins', async () => {
     const html = await render(
-      React.createElement(Body, {
-        style: { backgroundColor: '#ffffff', margin: '10px' },
-      }, 'Content'),
+      React.createElement(
+        Body,
+        {
+          style: { backgroundColor: '#ffffff', margin: '10px' },
+        },
+        'Content',
+      ),
     );
     // Body tag should have background-color
     expect(html).toMatch(/<body[^>]*background-color:#ffffff/);
@@ -107,9 +119,7 @@ describe('<Body>', () => {
 
 describe('<Container>', () => {
   it('renders as centered table with max-width', async () => {
-    const html = await render(
-      React.createElement(Container, null, 'Content'),
-    );
+    const html = await render(React.createElement(Container, null, 'Content'));
     expect(html).toContain('Content');
     expect(html).toContain('max-width:37.5em');
     expect(html).toContain('role="presentation"');
@@ -118,9 +128,13 @@ describe('<Container>', () => {
 
   it('passes custom styles', async () => {
     const html = await render(
-      React.createElement(Container, {
-        style: { backgroundColor: 'red' },
-      }, 'Content'),
+      React.createElement(
+        Container,
+        {
+          style: { backgroundColor: 'red' },
+        },
+        'Content',
+      ),
     );
     expect(html).toContain('background-color:red');
   });
@@ -140,7 +154,9 @@ describe('<Section>', () => {
 describe('<Row>', () => {
   it('renders as table with children in tr', async () => {
     const html = await render(
-      React.createElement(Row, null,
+      React.createElement(
+        Row,
+        null,
         React.createElement(Column, null, 'Col 1'),
       ),
     );
@@ -169,9 +185,7 @@ describe('<Column>', () => {
 
 describe('<Text>', () => {
   it('renders as p with default styles', async () => {
-    const html = await render(
-      React.createElement(Text, null, 'Hello'),
-    );
+    const html = await render(React.createElement(Text, null, 'Hello'));
     expect(html).toContain('<p');
     expect(html).toContain('Hello');
     expect(html).toContain('font-size:14px');
@@ -179,9 +193,7 @@ describe('<Text>', () => {
   });
 
   it('applies default 16px margins', async () => {
-    const html = await render(
-      React.createElement(Text, null, 'Hello'),
-    );
+    const html = await render(React.createElement(Text, null, 'Hello'));
     expect(html).toContain('margin-top:16px');
     expect(html).toContain('margin-bottom:16px');
   });
@@ -196,9 +208,7 @@ describe('<Text>', () => {
 
 describe('<Heading>', () => {
   it('renders as h1 by default', async () => {
-    const html = await render(
-      React.createElement(Heading, null, 'Title'),
-    );
+    const html = await render(React.createElement(Heading, null, 'Title'));
     expect(html).toContain('<h1');
     expect(html).toContain('Title');
   });
@@ -270,10 +280,14 @@ describe('<Button>', () => {
 
   it('renders MSO conditional comments for padding', async () => {
     const html = await render(
-      React.createElement(Button, {
-        href: '#',
-        style: { padding: '10px 20px' },
-      }, 'Button'),
+      React.createElement(
+        Button,
+        {
+          href: '#',
+          style: { padding: '10px 20px' },
+        },
+        'Button',
+      ),
     );
     expect(html).toContain('<!--[if mso]>');
     expect(html).toContain('mso-font-width');
@@ -316,9 +330,7 @@ describe('<Preview>', () => {
   });
 
   it('pads with whitespace characters', async () => {
-    const html = await render(
-      React.createElement(Preview, null, 'Short'),
-    );
+    const html = await render(React.createElement(Preview, null, 'Short'));
     // Should contain zero-width characters for padding
     expect(html).toContain('\u200C');
   });
@@ -377,10 +389,16 @@ describe('<Markdown>', () => {
 describe('full email render', () => {
   it('renders a complete email structure', async () => {
     const html = await render(
-      React.createElement(Html, null,
+      React.createElement(
+        Html,
+        null,
         React.createElement(Head),
-        React.createElement(Body, null,
-          React.createElement(Container, null,
+        React.createElement(
+          Body,
+          null,
+          React.createElement(
+            Container,
+            null,
             React.createElement(Heading, null, 'Welcome'),
             React.createElement(Text, null, 'Hello World'),
             React.createElement(
@@ -403,108 +421,6 @@ describe('full email render', () => {
   });
 });
 
-describe('<CodeBlock>', () => {
-  it('renders code with syntax highlighting', async () => {
-    const html = await render(
-      React.createElement(CodeBlock, {
-        code: 'const x = 1;',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-      }),
-    );
-    expect(html).toContain('<pre');
-    expect(html).toContain('<code>');
-    expect(html).toContain('const');
-    expect(html).toContain('<span');
-  });
-
-  it('renders line numbers when enabled', async () => {
-    const html = await render(
-      React.createElement(CodeBlock, {
-        code: 'line1\nline2\nline3',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-        lineNumbers: true,
-      }),
-    );
-    expect(html).toContain('>1<');
-    expect(html).toContain('>2<');
-    expect(html).toContain('>3<');
-  });
-
-  it('applies theme base styles to <pre>', async () => {
-    const html = await render(
-      React.createElement(CodeBlock, {
-        code: 'hello',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-      }),
-    );
-    // Dracula theme has a dark background
-    expect(html).toContain('background');
-    expect(html).toContain('width:100%');
-  });
-
-  it('applies custom font family', async () => {
-    const html = await render(
-      React.createElement(CodeBlock, {
-        code: 'test',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-        fontFamily: 'Fira Code',
-      }),
-    );
-    expect(html).toContain('Fira Code');
-  });
-
-  it('replaces spaces with non-breaking space sequences', async () => {
-    const html = await render(
-      React.createElement(CodeBlock, {
-        code: 'a b',
-        language: 'markup',
-        theme: codeBlockThemes.dracula,
-      }),
-    );
-    // Spaces are replaced with \xA0\u200D\u200B for email compatibility
-    expect(html).toContain('\xA0\u200D\u200B');
-    expect(html).not.toMatch(/<span[^>]*> <\/span>/);
-  });
-
-  it('renders multi-line code with <br> tags', async () => {
-    const html = await render(
-      React.createElement(CodeBlock, {
-        code: 'line1\nline2',
-        language: 'markup',
-        theme: codeBlockThemes.dracula,
-      }),
-    );
-    expect(html).toContain('<br/>');
-  });
-
-  it('applies custom style on top of theme', async () => {
-    const html = await render(
-      React.createElement(CodeBlock, {
-        code: 'test',
-        language: 'javascript',
-        theme: codeBlockThemes.dracula,
-        style: { borderRadius: '8px' },
-      }),
-    );
-    expect(html).toContain('border-radius:8px');
-  });
-
-  it('throws for unknown language', () => {
-    expect(() =>
-      React.createElement(CodeBlock, {
-        code: 'test',
-        language: 'nonexistent' as any,
-        theme: codeBlockThemes.dracula,
-      }),
-    ).not.toThrow();
-    // The error is thrown at render time, not at createElement time
-  });
-});
-
 describe('<CodeInline>', () => {
   it('renders code and span elements with Orange.fr fix', async () => {
     const html = await render(
@@ -518,18 +434,14 @@ describe('<CodeInline>', () => {
   });
 
   it('includes Orange.fr CSS fix in style tag', async () => {
-    const html = await render(
-      React.createElement(CodeInline, null, 'test'),
-    );
+    const html = await render(React.createElement(CodeInline, null, 'test'));
     expect(html).toContain('<style>');
     expect(html).toContain('meta ~ .cino');
     expect(html).toContain('meta ~ .cio');
   });
 
   it('hides the span fallback by default', async () => {
-    const html = await render(
-      React.createElement(CodeInline, null, 'test'),
-    );
+    const html = await render(React.createElement(CodeInline, null, 'test'));
     expect(html).toMatch(/class="[^"]*cio[^"]*"[^>]*style="display:none/);
   });
 
