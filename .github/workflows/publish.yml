@@ -30,7 +30,6 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -49,10 +48,15 @@ jobs:
 
       - name: Publish @unmail/react
         if: steps.changesets.outputs.hasChangesets == 'false'
-        run: npm publish --access public
+        run: |
+          # Ensure no stale .npmrc interferes with OIDC
+          rm -f "$HOME/.npmrc" 2>/dev/null || true
+          npm publish --access public
         working-directory: packages/react
 
       - name: Publish @unmail/vue
         if: steps.changesets.outputs.hasChangesets == 'false'
-        run: npm publish --access public
+        run: |
+          rm -f "$HOME/.npmrc" 2>/dev/null || true
+          npm publish --access public
         working-directory: packages/vue
